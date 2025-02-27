@@ -1,4 +1,4 @@
-package com.labs.common.gson;
+package com.labs.client.gson;
 
 import com.google.gson.*;
 import java.lang.reflect.Type;

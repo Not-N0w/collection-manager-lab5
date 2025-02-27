@@ -30,6 +30,12 @@
       <version>2.12.1</version>
     </dependency>
   </dependencies>
+  
+  <resources>
+    <resource>
+        <directory>src/main/resources</directory>
+    </resource>
+</resources>
 
   <build>
     <plugins>

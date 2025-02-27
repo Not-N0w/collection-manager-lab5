@@ -1,4 +1,4 @@
-package com.labs.utils;
+package com.labs.client;
 
 public class ValueChecker {
 

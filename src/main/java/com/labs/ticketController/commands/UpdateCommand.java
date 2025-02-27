@@ -16,7 +16,7 @@ public class UpdateCommand implements Command {
         this.collectionManager = collectionManager;
     }
 
-    public DataContainer execute() {
+    public Object execute() {
         collectionManager.update(id, ticket);
         return null;
     }

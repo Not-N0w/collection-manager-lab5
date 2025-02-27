@@ -3,7 +3,7 @@ package com.labs.common.core;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-import com.labs.utils.ValueChecker;
+import com.labs.client.ValueChecker;
 
 public final class Ticket implements Serializable, Comparable<Ticket> {
     static Long nextID = Long.valueOf(1);
@@ -96,7 +96,7 @@ public final class Ticket implements Serializable, Comparable<Ticket> {
         String[] objStrings = obj.toString().split("\n");
         String result = "";
         for (String str : objStrings) {
-            result += " " + str + "\n";
+            result += "    " + str + "\n";
         }
         return result;   
     }
@@ -104,19 +104,19 @@ public final class Ticket implements Serializable, Comparable<Ticket> {
     @Override
     public String toString() {
         String result = "Ticket ->\n";
-        result += "Name: " + name + "\n";
-        result += "ID: " + String.valueOf(id) + "\n";
-        result += coordinates.toString();
-        result += "CreationDate: "+ creationDate.toString() + "\n";
-        result += "Price: " + String.valueOf(price) + "\n";
-        result += "Refundable: " + String.valueOf(refundable) + "\n";
-        result += "TicketType: " + type.name() + "\n";
+        result += "    Name: " + name + "\n";
+        result += "    ID: " + String.valueOf(id) + "\n";
+        result += tab(coordinates.toString());
+        result += "    CreationDate: "+ creationDate.toString() + "\n";
+        result += "    Price: " + String.valueOf(price) + "\n";
+        result += "    Refundable: " + String.valueOf(refundable) + "\n";
+        result += "    TicketType: " + type.name() + "\n";
         result += tab(person.toString());
         return result;
     }
     
     @Override
     public int compareTo(Ticket other) {
-        return this.refundable.compareTo(other.refundable);
+        return this.id.compareTo(other.id);
     }
 }

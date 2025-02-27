@@ -1,19 +1,16 @@
 package com.labs.client;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Scanner;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+
 import com.labs.common.DataContainer;
 import com.labs.common.core.Coordinates;
 import com.labs.common.core.Location;
 import com.labs.common.core.Person;
 import com.labs.common.core.Ticket;
 import com.labs.common.core.TicketType;
-import com.labs.common.gson.LocalDateAdapter;
-import com.labs.common.gson.LocalDateTimeAdapter;
+
 
 
 public class CommandDataParser {
@@ -39,7 +36,7 @@ public class CommandDataParser {
                 default -> throw new IllegalArgumentException("Unsupported type: " + type);
             };
         } catch (Exception exception) {
-            scanner.next();
+            //scanner.next();
             throw new IllegalArgumentException(varName + " should be " + type.getSimpleName() + "!", exception);
         }
     }
@@ -113,6 +110,7 @@ public class CommandDataParser {
     }
 
     private Ticket parseTicket() {
+        scanner.nextLine();
         Ticket ticket = new Ticket();
         int tabs = 0;
 
@@ -160,7 +158,6 @@ public class CommandDataParser {
     }
 
     public DataContainer parse(String command) throws IllegalArgumentException {
-        scanner.nextLine();
 
         DataContainer result = new DataContainer();
         result.setCommad(command);
@@ -180,6 +177,8 @@ public class CommandDataParser {
             case "update":
                 result.add("ticket", parseTicket());
                 result.add("id", parseID());
+                break;
+            case "show", "save", "help", "exit":
                 break;
             default:
                 throw new IllegalArgumentException("Command '" + command +  "' not found." );

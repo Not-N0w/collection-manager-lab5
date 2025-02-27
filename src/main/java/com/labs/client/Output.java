@@ -1,6 +1,9 @@
 package com.labs.client;
 
+import java.util.ArrayList;
+
 import com.labs.common.DataContainer;
+import com.labs.common.core.Ticket;
 
 public class Output {
     public static final String ANSI_RESET = "\u001B[0m";
@@ -17,10 +20,7 @@ public class Output {
     public void fileNotExistMessage(String filePath) {
         out("File '" + filePath + "' not found.");
     }
-    public void successfulFileDataLoaded(String filePath) {
-        out("Data from the file '" + filePath + "' successfully loaded.");
-    }
-
+    
     public void out(String inString) {
         System.out.println(inString);
     }
@@ -32,15 +32,36 @@ public class Output {
     public void outSub(String inString) {
         System.out.println(ANSI_BLUE +  inString + ANSI_RESET);
     }
+    public void outOk(String inString) {
+        System.out.println(ANSI_GREEN +  inString + ANSI_RESET);
+    }
 
     public void responseOut(DataContainer response) {
         if(response == null) return;
-        if((String)response.get("status") == "Error") {
+        if(((String)response.get("status")).equals("error")) {
             outError((String)response.get("message"));
+            return;
         }
-        else {
-            outSub((String)response.get("message"));
+        if(response.getCommand().equals("addSome")) {
+            outOk("Data succsessfully loaded!");
+            return;
         }
-        //data out
+        outOk((String)response.get("message"));
+        
+
+        Object responseData = response.get("data");
+        if(responseData == null) return;
+        outSub("OUTPUT:");
+
+        try {
+            ArrayList<Ticket> tickets = (ArrayList<Ticket>)responseData;
+            for(var ticket : tickets) {
+                System.out.println(ticket.toString() + "\n");
+            }
+        }
+        catch(ClassCastException exception) {
+            Long number = (Long)responseData;
+            System.out.println(number);
+        }
     }
 }

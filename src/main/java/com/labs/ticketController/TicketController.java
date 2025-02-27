@@ -23,11 +23,11 @@ public class TicketController {
             data = Deserializer.deserialize(inData);
         }
         catch(IOException exception) {
-            commandResponse.add("status", "Error");
+            commandResponse.add("status", "error");
             commandResponse.add("message", "Deserialization error (IO).");
         }
         catch(ClassNotFoundException exception) {
-            commandResponse.add("status", "Error");
+            commandResponse.add("status", "error");
             commandResponse.add("message", "Deserialization error. Invalid class.");
         }
 

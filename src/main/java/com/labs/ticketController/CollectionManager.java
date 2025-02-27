@@ -1,5 +1,7 @@
 package com.labs.ticketController;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.TreeSet;
 
 import com.labs.common.core.Ticket;
@@ -25,7 +27,10 @@ public class CollectionManager {
         ticket.setId(id);
         treeSet.add(ticket);
     }
-    
+    public ArrayList<Ticket> getAll() {
+        ArrayList<Ticket> tickets = new ArrayList<>(treeSet);
+        return tickets;
+    }
     
 
 

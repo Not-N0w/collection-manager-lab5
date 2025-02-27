@@ -2,7 +2,7 @@ package com.labs.common.core;
 
 import java.io.Serializable;
 
-import com.labs.utils.ValueChecker;
+import com.labs.client.ValueChecker;
 
 public class Coordinates implements Serializable {
 
@@ -48,8 +48,8 @@ public class Coordinates implements Serializable {
     @Override
     public String toString() {
         String result = "Coordinates ->\n";
-        result += "X: " + String.valueOf(x) + "\n";
-        result += "Y: " + String.valueOf(y) + "\n";
+        result += "    X: " + String.valueOf(x) + "\n";
+        result += "    Y: " + String.valueOf(y) + "\n";
         return result;
     }
 }

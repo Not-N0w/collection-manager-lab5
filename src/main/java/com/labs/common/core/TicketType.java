@@ -1,8 +1,7 @@
 package com.labs.common.core;
 
-import java.io.Serializable;
 
-public enum TicketType implements Serializable{
+public enum TicketType {
     VIP,
     USUAL,
     BUDGETARY,

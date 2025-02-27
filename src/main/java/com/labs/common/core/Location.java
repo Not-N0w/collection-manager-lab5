@@ -2,7 +2,7 @@ package com.labs.common.core;
 
 import java.io.Serializable;
 
-import com.labs.utils.ValueChecker;
+import com.labs.client.ValueChecker;
 
 public class Location implements Serializable {
 
@@ -50,9 +50,9 @@ public class Location implements Serializable {
     @Override
     public String toString() {
         String result = "Location ->\n";
-        result += "X: " + String.valueOf(x) + "\n";
-        result += "Y: " + String.valueOf(y) + "\n";
-        result += "Z: " + String.valueOf(z) + "\n";
+        result += "    X: " + String.valueOf(x) + "\n";
+        result += "    Y: " + String.valueOf(y) + "\n";
+        result += "    Z: " + String.valueOf(z) + "\n";
         return result;
     }
 }

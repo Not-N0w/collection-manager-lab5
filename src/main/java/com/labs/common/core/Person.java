@@ -2,7 +2,7 @@ package com.labs.common.core;
 
 import java.io.Serializable;
 
-import com.labs.utils.ValueChecker;
+import com.labs.client.ValueChecker;
 
 public class Person implements Serializable {
 
@@ -69,16 +69,16 @@ public class Person implements Serializable {
         String[] objStrings = obj.toString().split("\n");
         String result = "";
         for (String str : objStrings) {
-            result += " " + str + "\n";
+            result += "    " + str + "\n";
         }
         return result;   
     }
     @Override
     public String toString() {
         String result = "Person ->\n";
-        result += "Birthday: " + birthday.toString() + "\n";
-        result += "Weight: " + String.valueOf(weight) + "\n";
-        result += "PassportID: " + passportID + "\n";
+        result += "    Birthday: " + birthday.toString() + "\n";
+        result += "    Weight: " + String.valueOf(weight) + "\n";
+        result += "    PassportID: " + passportID + "\n";
         result += tab(location.toString());
         return result;
     }
