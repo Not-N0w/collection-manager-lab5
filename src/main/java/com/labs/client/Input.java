@@ -1,7 +1,6 @@
 package com.labs.client;
 
 import java.io.File;
-import java.nio.charset.StandardCharsets;
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;

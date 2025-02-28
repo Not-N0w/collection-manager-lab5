@@ -34,7 +34,7 @@ public class DataManager {
         return true;
     }
 
-    public boolean sendCommand(String command, Pair<String, Object> ... pairs) {
+    public boolean sendCommand(String command, @SuppressWarnings("unchecked") Pair<String, Object> ... pairs) {
         DataContainer dataContainer = new DataContainer(command);
         for(var item : pairs) {
             dataContainer.add(item.key(), item.value());

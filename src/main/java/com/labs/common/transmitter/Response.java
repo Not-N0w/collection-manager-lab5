@@ -1,7 +1,5 @@
 package com.labs.common.transmitter;
 
-import com.labs.common.DataContainer;
-
 public class Response {
     private static Response instance;
     public byte[] response;

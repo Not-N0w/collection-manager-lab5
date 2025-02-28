@@ -23,6 +23,7 @@ public class DataContainer implements Serializable {
     }
     public <T> T get(String key) {
         try {
+            @SuppressWarnings("unchecked")
             T value = (T)data.get(key);
             return value;
         }

@@ -14,7 +14,6 @@ public class ExecuteScriptCommand implements Command {
         this.cycle = cycle;
     }
 
-    @SuppressWarnings("unchecked")
     public Object execute() {
         Input input = new Input(cycle.output(), filePath);
         Cycle fileCycle = new Cycle(input, cycle.output(), cycle.fileManager(), cycle.dataManager());

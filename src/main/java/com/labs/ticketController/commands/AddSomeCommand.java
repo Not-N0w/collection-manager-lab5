@@ -22,6 +22,7 @@ public class AddSomeCommand implements Command {
         return null;
     }
 
+    @SuppressWarnings("unchecked")
     public void setArguments(Map<String, Object> data) throws KeyNotFoundExeption {
         if(!data.containsKey("tickets")) { throw new KeyNotFoundExeption("tickets"); }
         this.tickets = (ArrayList<Ticket>)data.get("tickets");

@@ -59,6 +59,7 @@ public class Output {
         outSub("OUTPUT:");
 
         try {
+            @SuppressWarnings("unchecked")
             ArrayList<Ticket> tickets = (ArrayList<Ticket>)responseData;
             for(var ticket : tickets) {
                 System.out.println(ticket.toString() + "\n");

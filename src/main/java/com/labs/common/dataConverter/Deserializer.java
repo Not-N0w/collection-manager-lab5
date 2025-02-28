@@ -9,6 +9,7 @@ public class Deserializer {
     public static <T>T deserialize(byte[] bytes) throws IOException, ClassNotFoundException {
         ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
         ObjectInputStream in = new ObjectInputStream(bis);
+        @SuppressWarnings("unchecked")
         T deserialized = (T) in.readObject();
         return deserialized;
     } 

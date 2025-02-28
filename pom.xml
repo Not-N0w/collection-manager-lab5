@@ -30,14 +30,13 @@
       <version>2.12.1</version>
     </dependency>
   </dependencies>
-  
-  <resources>
-    <resource>
-        <directory>src/main/resources</directory>
-    </resource>
-</resources>
 
   <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -49,6 +48,19 @@
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.3.0</version>
+      </plugin>
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.0.0</version>
+        <configuration>
+          <outputDirectory>jars</outputDirectory>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <mainClass>com.labs.App</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
       </plugin>
     </plugins>
   </build>
