@@ -11,12 +11,18 @@ import com.labs.common.core.Person;
 import com.labs.common.core.Ticket;
 import com.labs.common.core.TicketType;
 
-
-
 public class CommandDataParser {
     private Scanner scanner;
+    private boolean isFileReading = false;
+
     public CommandDataParser(Scanner scanner) {
         this.scanner = scanner;
+    }
+    public void noComments() {
+        isFileReading = true;
+    }
+    public void allowComments() {
+        isFileReading = false;
     }
 
     public <T> T scannerGet(String varName, Class<T> type) {
@@ -44,7 +50,7 @@ public class CommandDataParser {
     private Coordinates parseCoordinates(int tabs) {
         Coordinates coordinates = new Coordinates();
 
-        System.out.println("    ".repeat(tabs) +  "Coordinates->");
+        fieldOut(tabs, "Coordinates->\n");
         tabs += 1;
 
         fieldOut(tabs, "X: ");
@@ -65,7 +71,8 @@ public class CommandDataParser {
     private Location parseLocation(int tabs) {
         Location location = new Location();
 
-        System.out.println("    ".repeat(tabs) + "Location->");
+        fieldOut(tabs, "Location->\n");
+
         tabs += 1;
         fieldOut(tabs, "X: ");
         location.setX(scannerGet("X", Float.class));
@@ -81,7 +88,7 @@ public class CommandDataParser {
 
     private Person parsePerson(int tabs) {
         Person person = new Person();
-        System.out.println("    ".repeat(tabs) + "Person->");
+        fieldOut(tabs, "Person->\n");
         tabs += 1;
         scanner.nextLine();
 
@@ -106,6 +113,7 @@ public class CommandDataParser {
     }
 
     private void fieldOut(int tabs, String in) {
+        if(isFileReading) return;
         System.out.print("    ".repeat(tabs) + in);
     }
 
@@ -114,7 +122,8 @@ public class CommandDataParser {
         Ticket ticket = new Ticket();
         int tabs = 0;
 
-        System.out.println("    ".repeat(tabs) + "Ticket->");
+        fieldOut(tabs, "Ticket->\n");
+
         tabs += 1;
         fieldOut(tabs, "Name: ");
         ticket.setName(scannerGet("Name", String.class));

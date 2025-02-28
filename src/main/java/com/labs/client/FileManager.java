@@ -7,6 +7,7 @@ import com.labs.client.gson.LocalDateAdapter;
 import com.labs.client.gson.LocalDateTimeAdapter;
 import com.labs.common.core.Ticket;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -27,7 +28,6 @@ public class FileManager {
         this.input = input;
         this.output = output;
         this.collectionFilePath = collectionFilePath;
-
     }
 
     public void makeValidCollectionFile() {
@@ -46,13 +46,20 @@ public class FileManager {
         return collectionFilePath;
     }
 
-    public ArrayList<Ticket> getTickets() throws FileNotFoundException {
+    public ArrayList<Ticket> getTickets() {
         Gson gson = new GsonBuilder()
         .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
         .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
         .create();
 
-        String fileData = input.getFileData(collectionFilePath);
+        String fileData;
+        try {
+            fileData = getFileData(collectionFilePath);
+        }
+        catch(FileNotFoundException exception) {
+            return new ArrayList<Ticket>();
+        }
+
         if(fileData.isEmpty()) return new ArrayList<>();
         Type ticketListType = new TypeToken<ArrayList<Ticket>>() {}.getType();
         ArrayList<Ticket> tickets = gson.fromJson(fileData, ticketListType);
@@ -74,14 +81,11 @@ public class FileManager {
         }
     }
 
-    public String getRecoursesFileData(String filename) {
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(filename);
-        if (inputStream == null) {
-            return "";
-        }
-        Scanner scanner = new Scanner(inputStream, StandardCharsets.UTF_8);
-        String data = scanner.useDelimiter("\\A").next();
-        scanner.close();
-        return data;
+    public String getFileData(String filePath) throws FileNotFoundException {
+        Scanner fileScanner = new Scanner(new File(filePath));
+        fileScanner.useDelimiter("\\A");
+        String fileContent = fileScanner.hasNext() ? fileScanner.next() : "";
+        fileScanner.close();
+        return fileContent;
     }
 }

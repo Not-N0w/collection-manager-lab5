@@ -21,6 +21,10 @@ public class Output {
         out("File '" + filePath + "' not found.");
     }
     
+    public void outWaiting() {
+        System.out.println(ANSI_BLUE +  "Waiting for commands" + ANSI_RESET);
+    }
+
     public void out(String inString) {
         System.out.println(inString);
     }
@@ -35,6 +39,7 @@ public class Output {
     public void outOk(String inString) {
         System.out.println(ANSI_GREEN +  inString + ANSI_RESET);
     }
+
 
     public void responseOut(DataContainer response) {
         if(response == null) return;

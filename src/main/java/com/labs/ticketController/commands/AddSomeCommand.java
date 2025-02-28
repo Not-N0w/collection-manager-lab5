@@ -3,9 +3,10 @@ package com.labs.ticketController.commands;
 import java.util.ArrayList;
 import java.util.Map;
 
+import com.labs.common.Command;
 import com.labs.common.core.Ticket;
+import com.labs.common.exeptions.KeyNotFoundExeption;
 import com.labs.ticketController.CollectionManager;
-import com.labs.ticketController.exeptions.KeyNotFoundExeption;
 
 public class AddSomeCommand implements Command {
     ArrayList<Ticket> tickets;

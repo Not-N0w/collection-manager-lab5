@@ -1,33 +1,46 @@
 package com.labs.client;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import com.labs.common.DataContainer;
 
 
 public class Input {
-
     private Scanner scanner;
     private CommandDataParser commandDataParser;
+    private Output output;
 
-    Input() {
+    public Input(Output output) {
+        this.output = output;
         scanner = new Scanner(System.in);
         commandDataParser = new CommandDataParser(scanner);
     }
-    Input(String filePath) throws IOException {
-        scanner = new Scanner(new File(filePath), StandardCharsets.UTF_8);
+    public Input(Output output, String filePath) {
+        this.output = output;
+        this.output = output;
+        scannerInit(filePath);
         commandDataParser = new CommandDataParser(scanner);
     }
+
+    private void scannerInit(String filePath) {
+        try {
+            scanner = new Scanner(new File(filePath.strip()));
+        }
+        catch(Exception exception) {
+            output.outError("Something wrong with input file(");
+        }
+    }
+
     public String getCommand() {
+        if(!scanner.hasNext()) throw new NoSuchElementException("Input is clear.");
         String command = scanner.next();
         return command;
     }
-    public String makeCollectionFile() throws InputMismatchException, FileNotFoundException {
+    public String makeCollectionFile() throws InputMismatchException {
         System.out.print("Enter path of file for collection: ");
         String filePath = scanner.next();
       
@@ -44,18 +57,23 @@ public class Input {
         
         return file.getAbsolutePath();
     }
-
-    public DataContainer getData(String command) throws IllegalArgumentException {
-        DataContainer dataContainer = commandDataParser.parse(command);
-        return dataContainer;
+    public void noComments() {
+        commandDataParser.noComments();
+    }
+    public void allowComments() {
+        commandDataParser.allowComments();
+    }
+    public DataContainer getData(String command) {
+        try {
+            DataContainer dataContainer = commandDataParser.parse(command);
+            return dataContainer;
+        }
+        catch(IllegalArgumentException exception) {
+            output.outError("Input error: " + exception.getMessage());
+        }
+        return null;
     }
 
-    String getFileData(String filePath) throws FileNotFoundException {
-        Scanner fileScanner = new Scanner(new File(filePath));
-        fileScanner.useDelimiter("\\A");
-        String fileContent = fileScanner.hasNext() ? fileScanner.next() : "";
-        fileScanner.close();
-        return fileContent;
-    }
+
 
 }
