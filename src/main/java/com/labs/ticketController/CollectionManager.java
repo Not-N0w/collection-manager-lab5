@@ -2,6 +2,7 @@ package com.labs.ticketController;
 
 import java.util.ArrayList;
 import java.util.TreeSet;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import com.labs.common.core.Ticket;
 
@@ -30,7 +31,19 @@ public class CollectionManager {
         ArrayList<Ticket> tickets = new ArrayList<>(treeSet);
         return tickets;
     }
-    
+    public void removeById(Long id) {
+        treeSet.removeIf(ticket -> (ticket.id() == id));
+    }
+    public void clear() {
+        treeSet.clear();
+    }
+
+    public Integer averageOfPrice() {
+        AtomicInteger sumPrice = new AtomicInteger(0);
+        treeSet.forEach(x -> sumPrice.addAndGet(x.price()));
+        Integer avg = sumPrice.get()/treeSet.size();
+        return avg;
+    }
 
 
 }

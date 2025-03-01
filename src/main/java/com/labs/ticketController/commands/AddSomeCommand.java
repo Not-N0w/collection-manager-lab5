@@ -9,8 +9,8 @@ import com.labs.common.exeptions.KeyNotFoundExeption;
 import com.labs.ticketController.CollectionManager;
 
 public class AddSomeCommand implements Command {
-    ArrayList<Ticket> tickets;
-    CollectionManager collectionManager;
+    private ArrayList<Ticket> tickets;
+    private CollectionManager collectionManager;
     public AddSomeCommand(CollectionManager collectionManager) {
         this.collectionManager = collectionManager;
     }

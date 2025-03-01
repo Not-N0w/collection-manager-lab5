@@ -10,7 +10,7 @@ import com.labs.ticketController.CollectionManager;
 public class UpdateCommand implements Command {
     private Ticket ticket;
     private Long id;
-    CollectionManager collectionManager;
+    private CollectionManager collectionManager;
 
     public UpdateCommand(CollectionManager collectionManager) {
         this.collectionManager = collectionManager;

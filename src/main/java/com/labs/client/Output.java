@@ -58,16 +58,21 @@ public class Output {
         if(responseData == null) return;
         outSub("OUTPUT:");
 
-        try {
+        if(responseData instanceof ArrayList<?>) {
             @SuppressWarnings("unchecked")
             ArrayList<Ticket> tickets = (ArrayList<Ticket>)responseData;
             for(var ticket : tickets) {
                 System.out.println(ticket.toString() + "\n");
             }
         }
-        catch(ClassCastException exception) {
+        else if(responseData instanceof Integer) {
+            Integer number = (Integer)responseData;
+            System.out.println(number);
+        }
+        else if(responseData instanceof Long) {
             Long number = (Long)responseData;
             System.out.println(number);
         }
+
     }
 }

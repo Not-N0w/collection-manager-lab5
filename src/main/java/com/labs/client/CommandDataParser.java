@@ -187,7 +187,7 @@ public class CommandDataParser {
                 result.add("ticket", parseTicket());
                 result.add("id", parseID());
                 break;
-            case "show", "save", "help", "exit":
+            case "show", "save", "help", "exit", "average_of_price":
                 break;
             default:
                 throw new IllegalArgumentException("Command '" + command +  "' not found." );

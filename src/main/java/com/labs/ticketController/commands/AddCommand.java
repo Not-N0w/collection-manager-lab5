@@ -9,7 +9,7 @@ import com.labs.ticketController.CollectionManager;
 
 public class AddCommand implements Command {
     private Ticket ticket;
-    CollectionManager collectionManager;
+    private CollectionManager collectionManager;
 
     public AddCommand(CollectionManager collectionManager) {
         this.collectionManager = collectionManager;

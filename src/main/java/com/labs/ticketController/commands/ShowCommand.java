@@ -4,7 +4,7 @@ import com.labs.common.Command;
 import com.labs.ticketController.CollectionManager;
 
 public class ShowCommand implements Command {
-    CollectionManager collectionManager;
+    private CollectionManager collectionManager;
 
     public ShowCommand(CollectionManager collectionManager) {
         this.collectionManager = collectionManager;
