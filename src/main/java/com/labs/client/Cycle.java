@@ -21,10 +21,12 @@ public class Cycle {
     }
     public void noComments() {
         input.noComments();
+        output.noComments();
         this.isFileReading = true;
     }
     public void allowComments() {
         input.allowComments();
+        output.allowComments();
         this.isFileReading = false;
     }
 

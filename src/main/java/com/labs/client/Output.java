@@ -15,13 +15,21 @@ public class Output {
     public static final String ANSI_PURPLE = "\u001B[35m";
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_WHITE = "\u001B[37m";
+    private boolean isCommentsAllowed = true;
 
+    public void noComments() {
+        isCommentsAllowed = false;
+    }
+    public void allowComments() {
+        isCommentsAllowed = true;
+    }
 
     public void fileNotExistMessage(String filePath) {
         out("File '" + filePath + "' not found.");
     }
     
     public void outWaiting() {
+        if(!isCommentsAllowed) return;
         System.out.println(ANSI_BLUE +  "Waiting for commands" + ANSI_RESET);
     }
 
@@ -34,9 +42,11 @@ public class Output {
     }
 
     public void outSub(String inString) {
+        if(!isCommentsAllowed) return;
         System.out.println(ANSI_BLUE +  inString + ANSI_RESET);
     }
     public void outOk(String inString) {
+        if(!isCommentsAllowed) return;
         System.out.println(ANSI_GREEN +  inString + ANSI_RESET);
     }
 
@@ -58,21 +68,28 @@ public class Output {
         if(responseData == null) return;
         outSub("OUTPUT:");
 
+        String command = response.getCommand();
+        out("-- " + ANSI_PURPLE + command + ANSI_RESET +" " + "-".repeat(50 - command.length() - 4));
+
         if(responseData instanceof ArrayList<?>) {
             @SuppressWarnings("unchecked")
             ArrayList<Ticket> tickets = (ArrayList<Ticket>)responseData;
             for(var ticket : tickets) {
-                System.out.println(ticket.toString() + "\n");
+                out(ticket.toString() + "\n");
             }
         }
         else if(responseData instanceof Integer) {
             Integer number = (Integer)responseData;
-            System.out.println(number);
+            out(String.valueOf(number));
         }
         else if(responseData instanceof Long) {
             Long number = (Long)responseData;
-            System.out.println(number);
+            out(String.valueOf(number));
         }
-
+        else if(responseData instanceof String) {
+            String text = (String)responseData;
+            out(text);
+        }
+        out("-".repeat(50));
     }
 }

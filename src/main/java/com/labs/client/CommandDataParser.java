@@ -27,7 +27,7 @@ public class CommandDataParser {
 
     public <T> T scannerGet(String varName, Class<T> type) {
         try {
-            String input = scanner.nextLine();
+            String input = scanner.nextLine().strip();
             if(input.equals("")) {
                 return null;
             }
@@ -117,8 +117,11 @@ public class CommandDataParser {
         System.out.print("    ".repeat(tabs) + in);
     }
 
-    private Ticket parseTicket() {
+    private Ticket skipParseTicket() {
         scanner.nextLine();
+        return parseTicket();
+    }
+    private Ticket parseTicket() {
         Ticket ticket = new Ticket();
         int tabs = 0;
 
@@ -172,7 +175,7 @@ public class CommandDataParser {
         result.setCommad(command);
          switch (command) {
             case "add", "add_if_max", "add_if_min", "remove_greater":
-                result.add("ticket", parseTicket());
+                result.add("ticket", skipParseTicket());
                 break;
             case "remove_by_id":
                 result.add("id", parseID());
@@ -184,10 +187,10 @@ public class CommandDataParser {
                 result.add("refundable", parseRefundable());
                 break;
             case "update":
-                result.add("ticket", parseTicket());
                 result.add("id", parseID());
+                result.add("ticket", parseTicket());
                 break;
-            case "show", "save", "help", "exit", "average_of_price":
+            case "show", "save", "help", "exit", "average_of_price", "info":
                 break;
             default:
                 throw new IllegalArgumentException("Command '" + command +  "' not found." );

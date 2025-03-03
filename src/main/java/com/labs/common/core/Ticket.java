@@ -1,6 +1,7 @@
 package com.labs.common.core;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.labs.client.ValueChecker;
@@ -117,6 +118,23 @@ public final class Ticket implements Serializable, Comparable<Ticket> {
     
     @Override
     public int compareTo(Ticket other) {
-        return this.id.compareTo(other.id);
+        if(this.refundable.compareTo(other.refundable) == 0) {
+            if(this.price == other.price) {
+                return this.id.compareTo(other.id);
+            }
+            else if(this.price < other.price) {
+                return -1;
+            }
+            else {
+                return 1;
+            }
+        }
+        else if(this.refundable.compareTo(other.refundable) < 0) {
+            return -1;
+        }
+        else {
+            return 1;
+        }
     }
+
 }
