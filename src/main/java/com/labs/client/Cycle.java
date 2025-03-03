@@ -11,7 +11,8 @@ public class Cycle {
     private Output output;
     private FileManager fileManager;
     private DataManager dataManager;
-    private boolean isFileReading;
+    private boolean needLeave = false;
+
     public Cycle(Input input, Output output, FileManager fileManager, DataManager dataManager) {
         localCommandManager = new CommandManager(this, fileManager, dataManager);
         this.input = input;
@@ -19,20 +20,15 @@ public class Cycle {
         this.fileManager = fileManager;
         this.dataManager = dataManager;
     }
-    public void noComments() {
-        input.noComments();
-        output.noComments();
-        this.isFileReading = true;
-    }
-    public void allowComments() {
-        input.allowComments();
-        output.allowComments();
-        this.isFileReading = false;
+
+    public void leave() {
+        needLeave = true;
     }
 
+
     public void cycle() {
-        while(true) {
-            if(!isFileReading) output.outWaiting();
+        while(!needLeave) {
+            output.waiting();
             String command = "";
             try {
                 command = input.getCommand();
@@ -46,7 +42,7 @@ public class Cycle {
 
             DataContainer localResponse = localCommandManager.executeCommand(commandData);
             if(localResponse != null) {
-                if(!isFileReading) output.responseOut(localResponse);
+                output.responseOut(localResponse);
                 continue;
             } 
 

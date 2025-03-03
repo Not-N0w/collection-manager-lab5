@@ -16,9 +16,15 @@ public class ExecuteScriptCommand implements Command {
 
     public Object execute() {
         Input input = new Input(cycle.output(), filePath);
+        if(!input.checkScanner()) return null;
         Cycle fileCycle = new Cycle(input, cycle.output(), cycle.fileManager(), cycle.dataManager());
-        fileCycle.noComments();
+        fileCycle.output().noComments();
+        fileCycle.input().noComments();
+
         fileCycle.cycle();
+
+        fileCycle.output().allowComments();
+        fileCycle.input().allowComments();
         return null;
     }
 

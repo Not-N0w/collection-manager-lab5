@@ -24,13 +24,15 @@ public class Input {
         scannerInit(filePath);
         commandDataParser = new CommandDataParser(scanner);
     }
-
+    public boolean checkScanner() {
+        return (scanner == null ? false : true);
+    }
     private void scannerInit(String filePath) {
         try {
             scanner = new Scanner(new File(filePath.strip()));
         }
         catch(Exception exception) {
-            output.outError("Something wrong with input file(");
+           output.fileNotExistMessage(filePath);;
         }
     }
 

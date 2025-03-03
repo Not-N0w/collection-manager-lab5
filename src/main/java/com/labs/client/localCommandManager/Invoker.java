@@ -13,7 +13,7 @@ import com.labs.common.AbstractInvoker;
 public class Invoker extends AbstractInvoker {
     public Invoker(Cycle cycle, FileManager fileManager, DataManager dataManager) {
         commands.put("help", new HelpCommand());
-        commands.put("exit", new ExitCommand());
+        commands.put("exit", new ExitCommand(cycle));
         commands.put("save", new SaveCommand(fileManager, dataManager));
         commands.put("execute_script", new ExecuteScriptCommand(cycle));
     }

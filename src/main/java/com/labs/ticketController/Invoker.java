@@ -30,6 +30,7 @@ public class Invoker extends AbstractInvoker {
         commands.put("filter_greater_than_refundable", new FilterGreaterThanRefundableCommand(cm));
         commands.put("add_if_max", new AddIfMaxCommand(cm));
         commands.put("add_if_min", new AddIfMinCommand(cm));
+        commands.put("remove_greater", new AddIfMinCommand(cm));
         commands.put("info", new InfoCommand(cm));
     }
 }

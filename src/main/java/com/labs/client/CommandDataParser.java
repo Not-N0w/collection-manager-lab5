@@ -153,7 +153,10 @@ public class CommandDataParser {
     private Long parseID() {
         Long result;
         result = scannerGet("ID", Long.class);
-        if(result <= 0) {
+        if(result == null) {
+            throw new IllegalArgumentException("ID value can't be null!");
+        }
+        else if(result <= 0) {
             throw new IllegalArgumentException("ID should be more than 0!");
         }
         return result;

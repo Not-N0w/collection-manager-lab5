@@ -1,7 +1,6 @@
 package com.labs.common.core;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.labs.client.ValueChecker;
