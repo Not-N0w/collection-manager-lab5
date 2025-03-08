@@ -5,9 +5,14 @@ import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 import com.labs.common.Command;
 
-public class HelpCommand implements Command  {
+/** Класс ккоманды help */
+public class HelpCommand implements Command {
 
-    public Object execute()  {
+    /**
+     * Метод, исполняющий команду help. Возвращяает все из файла help.txt в
+     * строковом представлении.
+     */
+    public Object execute() {
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream("help.txt");
         if (inputStream == null) {
             return "";

@@ -1,4 +1,4 @@
-help
+!help
 info
 add
 idk_name
@@ -75,6 +75,5 @@ show
 average_of_price
 count_greater_than_refundable true
 filter_greater_than_refundable true
-clear
 show
 exit

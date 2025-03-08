@@ -5,6 +5,7 @@ import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/** Класс - адаптер для нормализации преобразования {@link LocalDate} в JSON */
 public class LocalDateAdapter implements JsonSerializer<LocalDate>, JsonDeserializer<LocalDate> {
 
     private static final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE;
