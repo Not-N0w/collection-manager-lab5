@@ -1,6 +1,6 @@
 ﻿# Лабораторная работа #5
 
-[Документация](#https://not-n0w.github.io/lab5/)
+[Документация](https://not-n0w.github.io/lab5/)
 
 ## Структура
 3 блока: client, common, ticketController(server)
