@@ -17,7 +17,7 @@ public class ValueChecker {
      * @param limitDown нижняя граница
      * @param limitUp   верхняя граница
      * @param varName   имя поля (для формирования сообщения об ошибке)
-     * @throws IllegalArgumentException - если {@link item} не входит в указанные
+     * @throws IllegalArgumentException - если {@code item} не входит в указанные
      *                                  границы
      */
     public static <T extends Number & Comparable<T>> void checkLimits(T item, T limitDown, T limitUp, String varName) {
@@ -50,7 +50,7 @@ public class ValueChecker {
      * @param <T>     тип входящего объекта
      * @param item    объект для проверки его значения
      * @param varName имя поля (для формирования сообщения об ошибке)
-     * @throws IllegalArgumentException - если {@link item} является null
+     * @throws IllegalArgumentException - если {@code item} является null
      */
     public static <T> void nullCheck(T item, String varName) {
         if (item == null) {
@@ -64,7 +64,7 @@ public class ValueChecker {
      * 
      * @param item    строка для проверки ее значения
      * @param varName имя поля (для формирования сообщения об ошибке)
-     * @throws IllegalArgumentException - если строка {@link item} является пустой
+     * @throws IllegalArgumentException - если строка {@code item} является пустой
      */
     public static void stringEmptyCheck(String item, String varName) {
         if (item.isEmpty()) {

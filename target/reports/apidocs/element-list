@@ -1,0 +1,13 @@
+com.labs
+com.labs.client
+com.labs.client.extra
+com.labs.client.gson
+com.labs.client.localCommandManager
+com.labs.client.localCommandManager.commands
+com.labs.common
+com.labs.common.core
+com.labs.common.dataConverter
+com.labs.common.exeptions
+com.labs.common.transmitter
+com.labs.ticketController
+com.labs.ticketController.commands
