@@ -2,11 +2,6 @@
 <javadocOptions>
   <docletArtifacts>
     <docletArtifact />
-    <docletArtifact>
-      <groupId>org.apache.maven.doxia</groupId>
-      <artifactId>doxia-module-markdown</artifactId>
-      <version>1.11.1</version>
-    </docletArtifact>
   </docletArtifacts>
   <tagletArtifacts>
     <tagletArtifact />

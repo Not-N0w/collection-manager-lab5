@@ -75,19 +75,6 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <configuration>
           <failOnError>false</failOnError>
-          <outputDirectory>docs</outputDirectory>
-          <useStandardDocletOptions>true</useStandardDocletOptions>
-          <docletArtifacts>
-            <docletArtifact>
-              <groupId>org.apache.maven.doxia</groupId>
-              <artifactId>doxia-module-markdown</artifactId>
-              <version>1.11.1</version>
-            </docletArtifact>
-          </docletArtifacts>
-          <additionalOptions>
-            <additionalOption>-noqualifier</additionalOption>
-            <additionalOption>all</additionalOption>
-          </additionalOptions>
         </configuration>
         <executions>
           <execution>
@@ -95,6 +82,26 @@
               <goal>javadoc</goal>
             </goals>
             <phase>package</phase>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <move todir="${project.basedir}/docs">
+                  <fileset dir="${project.build.directory}/reports/apidocs" />
+                </move>
+              </target>
+            </configuration>
           </execution>
         </executions>
       </plugin>
