@@ -75,6 +75,8 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <configuration>
           <failOnError>false</failOnError>
+          <destDir>docs</destDir>
+          <outputDirectory>docs</outputDirectory>
         </configuration>
         <executions>
           <execution>
