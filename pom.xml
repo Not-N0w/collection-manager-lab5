@@ -75,8 +75,19 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <configuration>
           <failOnError>false</failOnError>
-          <destDir>docs</destDir>
           <outputDirectory>docs</outputDirectory>
+          <useStandardDocletOptions>true</useStandardDocletOptions>
+          <docletArtifacts>
+            <docletArtifact>
+              <groupId>org.apache.maven.doxia</groupId>
+              <artifactId>doxia-module-markdown</artifactId>
+              <version>1.11.1</version>
+            </docletArtifact>
+          </docletArtifacts>
+          <additionalOptions>
+            <additionalOption>-noqualifier</additionalOption>
+            <additionalOption>all</additionalOption>
+          </additionalOptions>
         </configuration>
         <executions>
           <execution>

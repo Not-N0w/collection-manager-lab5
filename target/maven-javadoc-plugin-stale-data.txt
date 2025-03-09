@@ -11,6 +11,8 @@
 17
 -sourcepath
 'C:/Users/YAROSLAV/Desktop/prog/sem2/lab5/src/main/java;C:/Users/YAROSLAV/Desktop/prog/sem2/lab5/target/generated-sources/annotations'
+-noqualifier
+all
 -author
 -bottom
 'Copyright &#169; 2025. All rights reserved.'
@@ -96,20 +98,20 @@ C:\Users\YAROSLAV\.m2\repository\io\airlift\aircompressor\0.27\aircompressor-0.2
 C:\Users\YAROSLAV\.m2\repository\commons-io\commons-io\2.18.0\commons-io-2.18.0.jar = 1741442614230
 C:\Users\YAROSLAV\.m2\repository\org\codehaus\plexus\plexus-interactivity-api\1.3\plexus-interactivity-api-1.3.jar = 1739721623888
 C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\src\main\java = 1739721626604
-C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\target\generated-sources\annotations = 1741527216758
-C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\allclasses-index.html = 1741527221893
-C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\allpackages-index.html = 1741527221895
-C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\constant-values.html = 1741527221682
-C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\element-list = 1741527221590
-C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\help-doc.html = 1741527221946
-C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\index-all.html = 1741527221939
-C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\index.html = 1741527221869
-C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\member-search-index.js = 1741527221902
-C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\module-search-index.js = 1741527221897
-C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\overview-summary.html = 1741527221943
-C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\overview-tree.html = 1741527221865
-C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\package-search-index.js = 1741527221898
-C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\search.html = 1741527221941
-C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\serialized-form.html = 1741527221718
-C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\tag-search-index.js = 1741527221904
-C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\type-search-index.js = 1741527221900
+C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\target\generated-sources\annotations = 1741527495018
+C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\allclasses-index.html = 1741527500205
+C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\allpackages-index.html = 1741527500207
+C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\constant-values.html = 1741527500012
+C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\element-list = 1741527499926
+C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\help-doc.html = 1741527500239
+C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\index-all.html = 1741527500231
+C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\index.html = 1741527500177
+C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\member-search-index.js = 1741527500211
+C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\module-search-index.js = 1741527500208
+C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\overview-summary.html = 1741527500237
+C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\overview-tree.html = 1741527500171
+C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\package-search-index.js = 1741527500209
+C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\search.html = 1741527500234
+C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\serialized-form.html = 1741527500026
+C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\tag-search-index.js = 1741527500212
+C:\Users\YAROSLAV\Desktop\prog\sem2\lab5\docs\apidocs\type-search-index.js = 1741527500210
