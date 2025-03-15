@@ -1,12 +1,14 @@
 package com.labs.client;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 import com.labs.common.DataContainer;
 import com.labs.common.core.Coordinates;
 import com.labs.common.core.Location;
 import com.labs.common.core.Person;
+import com.labs.common.core.Settable;
 import com.labs.common.core.Ticket;
 import com.labs.common.core.TicketType;
 
@@ -19,11 +21,14 @@ public class CommandDataParser {
     /** Поле флаг: происходит ли чтение из файла */
     private boolean isFileReading = false;
 
+    private Output output;
+
     /**
      * Конструктор - создание нового объекта
      */
-    public CommandDataParser(Scanner scanner) {
+    public CommandDataParser(Scanner scanner, Output output) {
         this.scanner = scanner;
+        this.output = output;
     }
 
     /** Метод отключающий вывод приглашений к вводу в консоль */
@@ -42,30 +47,62 @@ public class CommandDataParser {
      * @param varName имя заполняемого поля (для формирования Exeption.message)
      * @param type    ожидаемы возвращаемый тип
      */
-    public <T> T scannerGet(String varName, Class<T> type) {
+    private <T> T scannerGet(String varName, Class<T> type) {
         try {
-            String input = scanner.nextLine().strip();
+            String input = scanner.nextLine();
+            if (input.isEmpty()) {
+                return null;
+            }
             if (input.charAt(0) == '!') {
                 return scannerGet(varName, type);
             }
 
-            if (input.equals("")) {
-                return null;
-            }
-
+            input = input.replaceAll("\n", "");
             return switch (type.getSimpleName()) {
                 case "Double" -> type.cast(Double.parseDouble(input));
                 case "Float" -> type.cast(Float.parseFloat(input));
                 case "Integer" -> type.cast(Integer.parseInt(input));
                 case "Long" -> type.cast(Long.parseLong(input));
                 case "Boolean" -> type.cast(Boolean.parseBoolean(input));
-                case "String" -> type.cast(input.replaceAll("\n", ""));
+                case "String" -> type.cast(input);
+                case "LocalDate" -> type.cast(dateParse(input));
+                case "TicketType" -> type.cast(( input.matches("-?\\d+") ? TicketType.getById(Integer.parseInt(input)) : TicketType.valueOf(input)));
                 default -> throw new IllegalArgumentException("Unsupported type: " + type);
             };
-        } catch (Exception exception) {
+        }
+        catch (NumberFormatException exception) {
             throw new IllegalArgumentException(varName + " should be " + type.getSimpleName() + "!", exception);
         }
+        catch(IllegalArgumentException exception) {
+            throw new IllegalArgumentException(varName + " should be VIP(1), USUAL(2), BUDGETARY(3) or CHEAP(4).", exception);
+        }
+        catch(DateTimeParseException exception) {
+            throw new IllegalArgumentException(varName + " should be in format YYYY-MM-DD.", exception);
+        }
     }
+    /**
+     * Метод заполнения поля объекта
+     * 
+     * @param <T>
+     * @param item объект, поле которого нужно заполнить
+     * @param fieldName имя заполняемого поля
+     * @param comment комментарий к приглашению к вводу
+     * @param type тип заполняемого поля
+     * @param tabs количество пробелов (для форматирования вывод приглашений к вводу)
+     */
+    private <T> void fillField(Settable item, String fieldName, String comment, Class<T> type, int tabs) {
+        String coloredTypeString = Output.getColoredString(type.getSimpleName(), "purple");
+        fieldOut(tabs, coloredTypeString + "/" + fieldName + (comment.isEmpty() ? "" : " (" + comment +")") + ": ");
+        try {
+            var scanerData = scannerGet(fieldName, type);
+            item.set(fieldName, scanerData);
+        }
+        catch(Exception exception) {
+            output.outError(exception.getMessage());
+            fillField(item, fieldName, comment, type, tabs);
+        }
+    }
+
 
     /**
      * Метод парсинга координат
@@ -80,18 +117,14 @@ public class CommandDataParser {
         fieldOut(tabs, "Coordinates->\n");
         tabs += 1;
 
-        fieldOut(tabs, "X: ");
+        fillField(coordinates, "X", "", Integer.class, tabs);
+        fillField(coordinates, "Y", "", Float.class, tabs);
 
-        Integer scanerXData = scannerGet("X", Integer.class);
-        coordinates.setX(scanerXData);
-
-        fieldOut(tabs, "Y: ");
-        coordinates.setY(scannerGet("Y", Float.class));
         return coordinates;
     }
 
     /**
-     * Метод парсинга дфты
+     * Метод парсинга даты
      * 
      * @param dateString дата в строковом представлении ("YYYY-MM-DD")
      * @return Возвращает введенные дату (LocalDate)
@@ -112,16 +145,11 @@ public class CommandDataParser {
         Location location = new Location();
 
         fieldOut(tabs, "Location->\n");
-
         tabs += 1;
-        fieldOut(tabs, "X: ");
-        location.setX(scannerGet("X", Float.class));
 
-        fieldOut(tabs, "Y: ");
-        location.setY(scannerGet("Y", Float.class));
-
-        fieldOut(tabs, "Z: ");
-        location.setZ(scannerGet("Z", Long.class));
+        fillField(location, "X", "", Float.class, tabs);
+        fillField(location, "Y", "", Float.class, tabs);
+        fillField(location, "Z", "", Long.class, tabs);
 
         return location;
     }
@@ -137,24 +165,12 @@ public class CommandDataParser {
         Person person = new Person();
         fieldOut(tabs, "Person->\n");
         tabs += 1;
-        scanner.nextLine();
 
-        fieldOut(tabs, "Birthday (YYYY-MM-DD): ");
-        String date = scannerGet("Birthday", String.class);
-        try {
-            person.setBirthday(dateParse(date));
-        } catch (Exception exception) {
-            throw new IllegalArgumentException("Date should be in format YYYY-MM-DD!", exception);
-        }
-
-        fieldOut(tabs, "Weight: ");
-        person.setWeight(scannerGet("Weight", Double.class));
-
-        fieldOut(tabs, "PassportID: ");
-        person.setPassportID(scannerGet("PassportID", String.class));
+        fillField(person, "Birthday", "YYYY-MM-DD", LocalDate.class, tabs);
+        fillField(person, "Weight", "", Double.class, tabs);
+        fillField(person, "PassportID", "", String.class, tabs);
 
         person.setLocation(parseLocation(tabs));
-
         return person;
     }
 
@@ -193,27 +209,16 @@ public class CommandDataParser {
         int tabs = 0;
 
         fieldOut(tabs, "Ticket->\n");
-
         tabs += 1;
-        fieldOut(tabs, "Name: ");
-        ticket.setName(scannerGet("Name", String.class));
 
+        fillField(ticket, "Name", "", String.class, tabs);
         ticket.setCoordinates(parseCoordinates(tabs));
 
-        fieldOut(tabs, "Price: ");
-        ticket.setPrice(scannerGet("Price", Integer.class));
+        fillField(ticket, "Price", "", Integer.class, tabs);
+        fillField(ticket, "Refundable", "", Boolean.class, tabs);
+        fillField(ticket, "TicketType", "VIP(1), USUAL(2), BUDGETARY(3), CHEAP(4)", TicketType.class, tabs);
 
-        fieldOut(tabs, "Refundable: ");
-        ticket.setRfundable(scannerGet("Refundable", Boolean.class));
-
-        fieldOut(tabs, "Ticket Type (VIP, USUAL, BUDGETARY, CHEAP): ");
-        try {
-            ticket.setType(TicketType.valueOf(scanner.next()));
-        } catch (Exception exception) {
-            throw new IllegalArgumentException("Ticket Type should be VIP, USUAL, BUDGETARY or CHEAP!", exception);
-        }
         ticket.setPerson(parsePerson(tabs));
-
         return ticket;
     }
 

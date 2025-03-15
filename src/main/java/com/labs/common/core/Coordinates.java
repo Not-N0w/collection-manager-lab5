@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import com.labs.client.ValueChecker;
 
-public class Coordinates implements Serializable {
+public class Coordinates implements Serializable, Settable {
 
     private final int xLimit = -47;
     private final float yLimit = -69;
@@ -45,6 +45,21 @@ public class Coordinates implements Serializable {
         ValueChecker.checkLimits(y, yLimit, null, "Y");
         this.y = y;
     }
+
+    @Override
+    public <T> void set(String fieldName, T in) throws IllegalArgumentException {
+        switch (fieldName) {
+            case "X":
+                setX((Integer)in);
+                break;
+            case "Y":
+                setY((Float)in);
+                break;
+            default:
+                throw new IllegalArgumentException("Key " + fieldName + " not found.");
+        }
+    }
+
     @Override
     public String toString() {
         String result = "Coordinates ->\n";

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import com.labs.client.ValueChecker;
 
-public class Location implements Serializable {
+public class Location implements Serializable, Settable {
 
     private Float x; //Поле не может быть null
     private Float y; //Поле не может быть null
@@ -47,6 +47,25 @@ public class Location implements Serializable {
         ValueChecker.nullCheck(z, "Z");
         this.z = z;
     }
+
+
+    @Override
+    public <T> void set(String fieldName, T in) {
+        switch (fieldName) {
+            case "X":
+                setX((Float)in);
+                break;
+            case "Y":
+                setY((Float)in);
+                break;
+            case "Z":
+                setZ((Long)in);
+                break;
+            default:
+                throw new IllegalArgumentException("Key " + fieldName + " not found.");
+        }
+    }
+
     @Override
     public String toString() {
         String result = "Location ->\n";

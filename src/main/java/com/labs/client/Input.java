@@ -29,7 +29,7 @@ public class Input {
     public Input(Output output) {
         this.output = output;
         scanner = new Scanner(System.in);
-        commandDataParser = new CommandDataParser(scanner);
+        commandDataParser = new CommandDataParser(scanner, output);
     }
 
     /**
@@ -43,7 +43,7 @@ public class Input {
         this.output = output;
         this.output = output;
         scannerInit(filePath);
-        commandDataParser = new CommandDataParser(scanner);
+        commandDataParser = new CommandDataParser(scanner, output);
     }
 
     /**
@@ -74,8 +74,10 @@ public class Input {
      * @throws NoSuchElementException - если команда не найдена
      */
     public String getCommand() {
-        if (!scanner.hasNext())
-            throw new NoSuchElementException("Input is clear.");
+        if (!scanner.hasNext()) {
+            return "exit";
+        }
+            
         String command = scanner.next();
         if (command.charAt(0) == '!') {
             return getCommand();

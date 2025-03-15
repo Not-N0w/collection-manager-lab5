@@ -1,6 +1,9 @@
 package com.labs.client;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 import com.labs.common.DataContainer;
 import com.labs.common.core.Ticket;
 
@@ -9,7 +12,6 @@ import com.labs.common.core.Ticket;
  */
 public class Output {
     public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_YELLOW = "\u001B[33m";
@@ -17,6 +19,19 @@ public class Output {
     public static final String ANSI_PURPLE = "\u001B[35m";
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_WHITE = "\u001B[37m";
+
+    private static Map<String, String> colors;
+
+    static {
+        colors = new HashMap<>();
+        colors.put("red", ANSI_RED);
+        colors.put("green", ANSI_GREEN);
+        colors.put("yellow", ANSI_YELLOW);
+        colors.put("purple", ANSI_PURPLE);
+        colors.put("cyan", ANSI_CYAN);
+        colors.put("white", ANSI_WHITE);
+        colors.put("blue", ANSI_BLUE);
+    }
 
     /** Поле, указывающее на необходимость комментариев */
     private boolean isCommentsAllowed = true;
@@ -157,5 +172,9 @@ public class Output {
         out(makeBlock(content, ANSI_PURPLE + response.getCommand() + " -> " + "OUTPUT" + ANSI_RESET));
         out("\n");
 
+    }
+
+    public static String getColoredString(String in, String color) {
+        return colors.get(color) + in + ANSI_RESET;
     }
 }

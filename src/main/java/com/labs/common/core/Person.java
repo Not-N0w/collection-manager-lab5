@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import com.labs.client.ValueChecker;
 
-public class Person implements Serializable {
+public class Person implements Serializable, Settable {
 
     private final double weightLimit = 0;
 
@@ -73,6 +73,27 @@ public class Person implements Serializable {
         }
         return result;   
     }
+
+    @Override
+    public <T> void set(String fieldName, T in) {
+        switch (fieldName) {
+            case "Birthday":
+                setBirthday((java.time.LocalDate)in);
+                break;
+            case "Weight":
+                setWeight((Double)in);
+                break;
+            case "PassportID":
+                setPassportID((String)in);
+                break;
+            case "Location":
+                setLocation((Location)in);
+                break;
+            default:
+                throw new IllegalArgumentException("Key " + fieldName + " not found.");
+        }
+    }
+
     @Override
     public String toString() {
         String result = "Person ->\n";

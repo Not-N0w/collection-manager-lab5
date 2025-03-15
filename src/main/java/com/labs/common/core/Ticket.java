@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 import com.labs.client.ValueChecker;
 
-public final class Ticket implements Serializable, Comparable<Ticket> {
+public final class Ticket implements Serializable, Comparable<Ticket>, Settable {
     static Long nextID = Long.valueOf(1);
 
     private final int priceLimit = 0;
@@ -114,7 +114,32 @@ public final class Ticket implements Serializable, Comparable<Ticket> {
         result += tab(person.toString());
         return result;
     }
-    
+    @Override
+    public <T> void set(String fieldName, T in) {
+        switch (fieldName) {
+            case "Name":
+                setName((String)in);
+                break;
+            case "Coordiantes":
+                setCoordinates((Coordinates)in);
+                break;
+            case "Price":
+                setPrice((Integer)in);
+                break;
+            case "Person":
+                setPerson((Person)in);
+                break;
+            case "Refundable":
+                setRfundable((Boolean)in);
+                break;
+            case "TicketType":
+                setType((TicketType)in);
+                break;
+            default:
+                throw new IllegalArgumentException("Key " + fieldName + " not found.");
+        }
+    }
+
     @Override
     public int compareTo(Ticket other) {
         if(this.refundable.compareTo(other.refundable) == 0) {
