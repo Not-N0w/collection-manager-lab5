@@ -38,6 +38,7 @@ com\labs\client\localCommandManager\Invoker.class
 com\labs\common\core\TicketType.class
 com\labs\common\exeptions\KeyNotFoundExeption.class
 com\labs\ticketController\commands\FilterGreaterThanRefundableCommand.class
+com\labs\common\core\Settable.class
 com\labs\ticketController\commands\ClearCommand.class
 com\labs\client\FileManager.class
 com\labs\client\localCommandManager\commands\SaveCommand.class

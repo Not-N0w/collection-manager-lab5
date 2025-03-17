@@ -72,4 +72,3 @@ src/main/java/com/labs/
 
 ## Поправки в процессе:
  - Документация
- - Убрать(не дописать) говнокод в localCommandManager

@@ -11,15 +11,26 @@ import com.labs.common.core.Ticket;
  * Класс, реализующий вывод данных
  */
 public class Output {
+    /** Reset symbol for coloring strings */
     public static final String ANSI_RESET = "\u001B[0m";
+    /** Symbol for red color of string */
     public static final String ANSI_RED = "\u001B[31m";
+    /** Symbol for green color of string */
     public static final String ANSI_GREEN = "\u001B[32m";
+    /** Symbol for yellow color of string */
     public static final String ANSI_YELLOW = "\u001B[33m";
+    /** Symbol for blue color of string */
     public static final String ANSI_BLUE = "\u001B[34m";
+    /** Symbol for purple color of string */
     public static final String ANSI_PURPLE = "\u001B[35m";
+    /** Symbol for cyan color of string */
     public static final String ANSI_CYAN = "\u001B[36m";
+    /** Symbol for white color of string */
     public static final String ANSI_WHITE = "\u001B[37m";
-
+    /** Map with color symbols
+     * String - String
+     * Example: "red" - "\u001B[31m"
+    */
     private static Map<String, String> colors;
 
     static {

@@ -65,7 +65,6 @@ public class Input {
             scanner = new Scanner(new File(filePath.strip()));
         } catch (Exception exception) {
             output.fileNotExistMessage(filePath);
-            ;
         }
     }
 
