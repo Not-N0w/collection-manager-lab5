@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 com\labs\client\Input.class
 com\labs\ticketController\commands\RemoveGreaterCommand.class
 com\labs\ticketController\commands\AddSomeCommand.class
@@ -49,5 +48,3 @@ com\labs\ticketController\Invoker.class
 com\labs\ticketController\commands\ShowCommand.class
 com\labs\client\DataManager.class
 com\labs\ticketController\commands\AverageOfPriceCommand.class
-=======
->>>>>>> 933190186fc8be40fbb5a5d49d01169bbfc48fbd

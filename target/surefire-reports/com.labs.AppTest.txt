@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.labs.AppTest
 -------------------------------------------------------------------------------
-<<<<<<< HEAD
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.142 s -- in com.labs.AppTest
-=======
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.126 s -- in com.labs.AppTest
->>>>>>> 933190186fc8be40fbb5a5d49d01169bbfc48fbd
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.114 s -- in com.labs.AppTest
