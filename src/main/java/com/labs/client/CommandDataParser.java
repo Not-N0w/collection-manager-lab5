@@ -62,6 +62,7 @@ public class CommandDataParser {
             }
 
             input = input.replaceAll("\n", "");
+            input = input.strip();
             return switch (type.getSimpleName()) {
                 case "Double" -> type.cast(Double.parseDouble(input));
                 case "Float" -> type.cast(Float.parseFloat(input));
