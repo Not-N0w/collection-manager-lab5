@@ -1,6 +1,5 @@
 package com.labs.ticketController;
 
-
 import com.labs.common.AbstractInvoker;
 import com.labs.ticketController.commands.AddCommand;
 import com.labs.ticketController.commands.AddIfMaxCommand;
@@ -15,8 +14,14 @@ import com.labs.ticketController.commands.UpdateCommand;
 import com.labs.ticketController.commands.FilterGreaterThanRefundableCommand;
 import com.labs.ticketController.commands.InfoCommand;
 
-
+/**
+ * Вызыватель команд
+ * Расширяет {@link AbstractInvoker}
+ */
 public class Invoker extends AbstractInvoker {
+    /**
+     * Конструктор - создание нового объекта.
+     */
     public Invoker() {
         CollectionManager cm = new CollectionManager();
         commands.put("add", new AddCommand(cm));

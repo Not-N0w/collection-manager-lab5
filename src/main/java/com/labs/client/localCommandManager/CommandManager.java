@@ -5,7 +5,9 @@ import com.labs.client.DataManager;
 import com.labs.client.FileManager;
 import com.labs.common.DataContainer;
 
-/** Класс - менеджер команд */
+/**
+ * Класс - менеджер команд
+*/
 public class CommandManager {
     /** Поле - исполнитель команды */
     private Invoker invoker;

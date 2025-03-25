@@ -4,16 +4,20 @@ import java.util.Map;
 import com.labs.client.Cycle;
 import com.labs.client.Input;
 import com.labs.common.Command;
-import com.labs.common.exeptions.KeyNotFoundExeption;
+import com.labs.common.exceptions.KeyNotFoundException;
 
 /**
  * Класс команды execute_script
  */
 public class ExecuteScriptCommand implements Command {
-    /** Поле - путь к скрипту */
+    /**
+     * Поле - путь к скрипту
+    */
     private String filePath;
 
-    /** Поле - текущий цикл */
+    /**
+     * Поле - текущий цикл
+    */
     private Cycle cycle;
 
     /**
@@ -49,9 +53,9 @@ public class ExecuteScriptCommand implements Command {
      * 
      * @throws KeyNotFoundExeption  если путь не указан в аргументых команды.
      */
-    public void setArguments(Map<String, Object> data) throws KeyNotFoundExeption {
+    public void setArguments(Map<String, Object> data) throws KeyNotFoundException {
         if (!data.containsKey("path")) {
-            throw new KeyNotFoundExeption("path");
+            throw new KeyNotFoundException("path");
         }
         this.filePath = (String) data.get("path");
     }

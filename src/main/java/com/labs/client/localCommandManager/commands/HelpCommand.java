@@ -5,7 +5,9 @@ import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 import com.labs.common.Command;
 
-/** Класс ккоманды help */
+/**
+ * Класс ккоманды help
+*/
 public class HelpCommand implements Command {
 
     /**

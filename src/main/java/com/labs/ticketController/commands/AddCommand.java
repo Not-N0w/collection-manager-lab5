@@ -4,7 +4,7 @@ import java.util.Map;
 
 import com.labs.common.Command;
 import com.labs.common.core.Ticket;
-import com.labs.common.exeptions.KeyNotFoundExeption;
+import com.labs.common.exceptions.KeyNotFoundException;
 import com.labs.ticketController.CollectionManager;
 
 public class AddCommand implements Command {
@@ -20,8 +20,8 @@ public class AddCommand implements Command {
         return null;
     }
 
-    public void setArguments(Map<String, Object> data) throws KeyNotFoundExeption {
-        if(!data.containsKey("ticket")) { throw new KeyNotFoundExeption("ticket"); }
+    public void setArguments(Map<String, Object> data) throws KeyNotFoundException {
+        if(!data.containsKey("ticket")) { throw new KeyNotFoundException("ticket"); }
         this.ticket = (Ticket)data.get("ticket");
     }
 }

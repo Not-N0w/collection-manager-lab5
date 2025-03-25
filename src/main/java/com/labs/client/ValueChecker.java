@@ -5,7 +5,9 @@ package com.labs.client;
  */
 public class ValueChecker {
 
-    /** Конструктор, запрещающий создание объектов класса */
+    /** 
+     * Конструктор, запрещающий создание объектов класса 
+    */
     private ValueChecker() {
     }
 

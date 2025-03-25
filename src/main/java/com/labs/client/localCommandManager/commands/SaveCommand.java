@@ -12,10 +12,14 @@ import com.labs.common.core.Ticket;
  * Класс команды save.
  */
 public class SaveCommand implements Command {
-    /** Поле с классом, отвечающим за работу с файлами. */
+    /**
+     * Поле с классом, отвечающим за работу с файлами.
+    */
     private FileManager fileManager;
 
-    /** Поле с классом, отвечающим за обработку данных. */
+    /**
+     * Поле с классом, отвечающим за обработку данных.
+    */
     private DataManager dataManager;
 
     /**

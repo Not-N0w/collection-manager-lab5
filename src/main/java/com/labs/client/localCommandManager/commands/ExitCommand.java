@@ -8,7 +8,9 @@ import com.labs.common.Command;
  * Класс команды exit
  */
 public class ExitCommand implements Command {
-        /** Поле - текущий цикл */
+    /**
+     * Поле - текущий цикл
+    */
     private Cycle cycle; 
     
     /**

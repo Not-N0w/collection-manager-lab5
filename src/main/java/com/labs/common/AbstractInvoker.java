@@ -3,12 +3,24 @@ package com.labs.common;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.labs.common.exeptions.KeyNotFoundExeption;
+import com.labs.common.exceptions.KeyNotFoundException;
 
-
+/**
+ * Класс - исполнитель команд
+ */
 public abstract class AbstractInvoker {
+    /**
+     * Словарь: имя команды(строка) - Объект {@link Command}
+     */
     protected Map<String, Command> commands = new HashMap<>();
+    /**
+     * Данные, которые вернет команда
+     */
     private DataContainer response;
+    /**
+     * Вызов команды и ее верхнеуровневая обработка
+     * @param data содержит команду и ее парраметры
+     */
     public void run(DataContainer data) {
         String commandStr = data.getCommand();
         response = new DataContainer(commandStr);
@@ -17,7 +29,7 @@ public abstract class AbstractInvoker {
         try {
             currentCommand.setArguments(data.fullGet());
         } 
-        catch(KeyNotFoundExeption exception) {
+        catch(KeyNotFoundException exception) {
             response.add("status", "error");
             response.add("message", "Command failed: " + exception.getMessage());
             return;
@@ -34,6 +46,9 @@ public abstract class AbstractInvoker {
             return;
         }
     }
+    /**
+     * @return ответ последней исполненой команды
+     */
     public DataContainer getResponse() {
         return response;
     }

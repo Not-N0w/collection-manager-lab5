@@ -16,9 +16,13 @@ import com.labs.common.core.TicketType;
  * Класс-парсер данных комманды.
  */
 public class CommandDataParser {
-    /** Поле сканнер */
+    /** 
+     * Поле сканнер
+    */
     private Scanner scanner;
-    /** Поле флаг: происходит ли чтение из файла */
+    /**
+     * Поле флаг: происходит ли чтение из файла 
+    */
     private boolean isFileReading = false;
 
     private Output output;

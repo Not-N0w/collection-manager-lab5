@@ -27,7 +27,8 @@ public class Output {
     public static final String ANSI_CYAN = "\u001B[36m";
     /** Symbol for white color of string */
     public static final String ANSI_WHITE = "\u001B[37m";
-    /** Map with color symbols
+    /** 
+     * Map with color symbols
      * String - String
      * Example: "red" - "\u001B[31m"
     */
@@ -44,18 +45,26 @@ public class Output {
         colors.put("blue", ANSI_BLUE);
     }
 
-    /** Поле, указывающее на необходимость комментариев */
+    /** 
+     * Поле, указывающее на необходимость комментариев 
+    */
     private boolean isCommentsAllowed = true;
 
-    /** Вспомогательное поле, показывающие длинну выводимой строки, без цвета */
+    /** 
+     * Вспомогательное поле, показывающие длинну выводимой строки, без цвета
+    */
     private int lengthWithoutColor = 0;
 
-    /** Метод, отключающий комментарии */
+    /** 
+     * Метод, отключающий комментарии 
+    */
     public void noComments() {
         isCommentsAllowed = false;
     }
 
-    /** Метод, включающий комментарии */
+    /**
+     *  Метод, включающий комментарии
+    */
     public void allowComments() {
         isCommentsAllowed = true;
     }

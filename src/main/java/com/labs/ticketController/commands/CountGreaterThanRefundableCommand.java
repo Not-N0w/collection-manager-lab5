@@ -3,7 +3,7 @@ package com.labs.ticketController.commands;
 import java.util.Map;
 
 import com.labs.common.Command;
-import com.labs.common.exeptions.KeyNotFoundExeption;
+import com.labs.common.exceptions.KeyNotFoundException;
 import com.labs.ticketController.CollectionManager;
 
 public class CountGreaterThanRefundableCommand implements Command {
@@ -18,8 +18,8 @@ public class CountGreaterThanRefundableCommand implements Command {
         return collectionManager.countGreaterThanRefundable(refundable);
     }
 
-    public void setArguments(Map<String, Object> data) throws KeyNotFoundExeption {
-        if(!data.containsKey("refundable")) { throw new KeyNotFoundExeption("refundable"); }
+    public void setArguments(Map<String, Object> data) throws KeyNotFoundException {
+        if(!data.containsKey("refundable")) { throw new KeyNotFoundException("refundable"); }
         this.refundable = (Boolean)data.get("refundable");
     }
 }

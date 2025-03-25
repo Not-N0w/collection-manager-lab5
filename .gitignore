@@ -4,3 +4,4 @@ add
 a
 target/
 .vscode/
+.mvn/

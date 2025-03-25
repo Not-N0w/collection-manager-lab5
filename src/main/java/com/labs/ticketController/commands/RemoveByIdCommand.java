@@ -3,7 +3,7 @@ package com.labs.ticketController.commands;
 import java.util.Map;
 
 import com.labs.common.Command;
-import com.labs.common.exeptions.KeyNotFoundExeption;
+import com.labs.common.exceptions.KeyNotFoundException;
 import com.labs.ticketController.CollectionManager;
 
 public class RemoveByIdCommand implements Command {
@@ -19,8 +19,8 @@ public class RemoveByIdCommand implements Command {
         return null;
     }
 
-    public void setArguments(Map<String, Object> data) throws KeyNotFoundExeption {
-        if(!data.containsKey("id")) { throw new KeyNotFoundExeption("id"); }
+    public void setArguments(Map<String, Object> data) throws KeyNotFoundException {
+        if(!data.containsKey("id")) { throw new KeyNotFoundException("id"); }
         this.id = (Long)data.get("id");
     }
 }

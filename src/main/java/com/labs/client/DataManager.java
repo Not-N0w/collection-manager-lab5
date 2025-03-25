@@ -14,13 +14,19 @@ import com.labs.common.transmitter.Response;
  * сервера, а так же первичную обработку ответов.
  */
 public class DataManager {
-    /** Поле - запрос */
+    /** 
+     * Поле - запрос 
+    */
     private Request request;
 
-    /** Поле - ответ */
+    /** 
+     * Поле - ответ 
+    */
     private Response response;
 
-    /** Поле с классом, отвечающим за вывод данных. */
+    /** 
+     * Поле с классом, отвечающим за вывод данных.
+    */
     private Output output;
 
     /**

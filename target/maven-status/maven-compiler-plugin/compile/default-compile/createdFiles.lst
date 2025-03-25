@@ -36,7 +36,7 @@ com\labs\client\Output.class
 com\labs\client\gson\LocalDateAdapter.class
 com\labs\client\localCommandManager\Invoker.class
 com\labs\common\core\TicketType.class
-com\labs\common\exeptions\KeyNotFoundExeption.class
+com\labs\common\exceptions\KeyNotFoundException.class
 com\labs\ticketController\commands\FilterGreaterThanRefundableCommand.class
 com\labs\common\core\Settable.class
 com\labs\ticketController\commands\ClearCommand.class

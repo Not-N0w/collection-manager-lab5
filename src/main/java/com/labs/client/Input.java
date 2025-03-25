@@ -11,13 +11,19 @@ import com.labs.common.DataContainer;
  * Класс, реализующий получение пользовательских данных и их первичной обработки
  */
 public class Input {
-    /** Поле сканнер */
+    /**
+     *  Поле сканнер
+    */
     private Scanner scanner;
 
-    /** Парсер данных команды */
+    /** 
+     * Парсер данных команды 
+    */
     private CommandDataParser commandDataParser;
 
-    /** Поле с классом, отвечающим за вывод данных. */
+    /** 
+     * Поле с классом, отвечающим за вывод данных.
+    */
     private Output output;
 
     /**

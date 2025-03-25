@@ -7,7 +7,7 @@ com.labs.client.localCommandManager.commands
 com.labs.common
 com.labs.common.core
 com.labs.common.dataConverter
-com.labs.common.exeptions
+com.labs.common.exceptions
 com.labs.common.transmitter
 com.labs.ticketController
 com.labs.ticketController.commands

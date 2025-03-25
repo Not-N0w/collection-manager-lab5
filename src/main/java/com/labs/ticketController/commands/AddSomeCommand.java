@@ -5,7 +5,7 @@ import java.util.Map;
 
 import com.labs.common.Command;
 import com.labs.common.core.Ticket;
-import com.labs.common.exeptions.KeyNotFoundExeption;
+import com.labs.common.exceptions.KeyNotFoundException;
 import com.labs.ticketController.CollectionManager;
 
 public class AddSomeCommand implements Command {
@@ -23,8 +23,8 @@ public class AddSomeCommand implements Command {
     }
 
     @SuppressWarnings("unchecked")
-    public void setArguments(Map<String, Object> data) throws KeyNotFoundExeption {
-        if(!data.containsKey("tickets")) { throw new KeyNotFoundExeption("tickets"); }
+    public void setArguments(Map<String, Object> data) throws KeyNotFoundException {
+        if(!data.containsKey("tickets")) { throw new KeyNotFoundException("tickets"); }
         this.tickets = (ArrayList<Ticket>)data.get("tickets");
     }
 }

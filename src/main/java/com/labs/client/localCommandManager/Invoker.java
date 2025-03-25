@@ -30,7 +30,9 @@ public class Invoker extends AbstractInvoker {
         commands.put("execute_script", new ExecuteScriptCommand(cycle));
     }
 
-    /** Метод, проверяющий наличие команды в списке исполняемых. */
+    /**
+     * Метод, проверяющий наличие команды в списке исполняемых.
+    */
     public boolean check(String command) {
         return commands.containsKey(command);
     }
